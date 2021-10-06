@@ -1,8 +1,16 @@
-provider "aws" {
-      region = var.region
-}
+data "nutanix_clusters" "clusters" {}
 
-module "eks_example_complete" {
-  source  = "terraform-aws-modules/eks/aws//examples/complete"
-  version = "17.20.0"
+resource "nutanix_virtual_machine" "vm1" {
+  name = "test-dou"
+  cluster_uuid = data.nutanix_clusters.clusters.entities.0.metadata.uuid
+
+  categories {
+        name   = "Environment"
+    value  = "Staging"
+    }
+
+
+  num_vcpus_per_socket = 1
+  num_sockets          = 1
+  memory_size_mib      = 2048
 }
