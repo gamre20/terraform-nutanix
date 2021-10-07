@@ -55,6 +55,6 @@ resource "nutanix_virtual_machine" "ocp_nodes_testvm" {
   }
 
 #   nic_list {
-#     subnet_uuid = data.nutanix_subnet.subnet.id
+#     subnet_uuid = data.nutanix_clusters.clusters.entities.0.metadata.uuid
 #   }
 }
