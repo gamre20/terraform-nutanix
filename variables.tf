@@ -1,32 +1,17 @@
-terraform {
-  required_providers {
-   nutanix = {
-      source = "nutanix/nutanix"
-
-   }
-
-  }
-
+variable "nutanix_username" {
+  description = "username"
+  default     = "admin"
 }
 
-provider "nutanix" {
-  username = var.nutanix_username
-  password = var.nutanix_passord
-  endpoint = var.nutanix_endpoint
-  port = var.nutanix_port
-  insecure = true
-  wait_timeout = 10
-  session_auth = true
+variable "nutanix_passord" {
+  description = "password"
+  default     = "nx2Tech291!"
 }
 
-data "nutanix_clusters" "clusters" {}
+variable "nutanix_endpoint" {
+  default     = "10.38.62.37"
+}
 
-resource "nutanix_virtual_machine" "vm1" {
-
-  name = "test-vm"
-  cluster_uuid = data.nutanix_clusters.clusters.entities.0.metadata.uuid
-  num_vcpus_per_socket = 1
-  num_sockets          = 1
-  memory_size_mib      = 2048
-
+variable "nutanix_port" {
+  default     = "9440"
 }
