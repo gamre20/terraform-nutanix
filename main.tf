@@ -31,7 +31,7 @@ data "nutanix_clusters" "clusters" {}
 resource "nutanix_virtual_machine" "ocp_nodes_testvm" {
 
   name                 = "MyVM from the Terraform Nutanix Provider"
-  cluster_uuid         = data.nutanix_cluster.cluster.id
+  cluster_uuid         = data.nutanix_clusters.clusters.entities.0.metadata.uuid
   num_vcpus_per_socket = "4"
   num_sockets          = "2"
   memory_size_mib      = 65536
