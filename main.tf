@@ -30,17 +30,16 @@ data "nutanix_clusters" "clusters" {}
 
 resource "nutanix_virtual_machine" "ocp_nodes_testvm" {
 
-  name                 = "MyVM from the Terraform Nutanix Provider"
+  name                 = "test_vm"
   cluster_uuid         = data.nutanix_clusters.clusters.entities.0.metadata.uuid
   num_vcpus_per_socket = "4"
   num_sockets          = "2"
   memory_size_mib      = 65536
-  power_state          = "ON"
 
   disk_list {
     data_source_reference = {
       kind = "image"
-      uuid = nutanix_image.image.id
+      uuid = nutanix_image.rhcos_image.id
     }
   }
 
@@ -55,7 +54,7 @@ resource "nutanix_virtual_machine" "ocp_nodes_testvm" {
     }
   }
 
-  nic_list {
-    subnet_uuid = data.nutanix_subnet.subnet.id
-  }
+#   nic_list {
+#     subnet_uuid = data.nutanix_subnet.subnet.id
+#   }
 }
