@@ -15,3 +15,7 @@ variable "nutanix_endpoint" {
 variable "nutanix_port" {
   default     = ""
 }
+
+variable "nutanix_vnic" {
+  default     = ""
+}
