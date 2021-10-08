@@ -1,13 +1,3 @@
-terraform {
-  required_providers {
-   nutanix = {
-      source = "nutanix/nutanix"
-
-   }
-
-  }
-
-}
 
 provider "nutanix" {
   username        = var.nutanix_username
@@ -28,9 +18,9 @@ resource "nutanix_image" "rhcos_image" {
 data "nutanix_clusters" "clusters" {}
 
 
-resource "nutanix_virtual_machine" "ocp_nodes_testvm" {
+resource "nutanix_virtual_machine" "ocp_nodes" {
 
-  name                 = "test_vm"
+  name                 = var.vm_name
   cluster_uuid         = data.nutanix_clusters.clusters.entities.0.metadata.uuid
   num_vcpus_per_socket = "4"
   num_sockets          = "2"
@@ -54,7 +44,7 @@ resource "nutanix_virtual_machine" "ocp_nodes_testvm" {
     }
   }
 
-#   nic_list {
-#     subnet_uuid = data.nutanix_clusters.clusters.entities.0.metadata.uuid
-#   }
+   nic_list {
+     subnet_uuid = data.nutanix_clusters.clusters.entities.0.metadata.uuid
+   }
 }
