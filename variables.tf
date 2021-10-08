@@ -17,5 +17,5 @@ variable "nutanix_port" {
 }
 
 variable "nutanix_vnic" {
-  default     = ""
+  default     = "de87ab87-4ee1-4921-9064-1139c33937c7"
 }
