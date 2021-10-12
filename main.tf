@@ -1,9 +1,3 @@
-terraform {
-  nutanix = {
-    source = "nutanix/nutanix"
-   }
-}
-
 
 
 provider "nutanix" {
