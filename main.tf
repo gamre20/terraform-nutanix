@@ -55,7 +55,7 @@ resource "nutanix_virtual_machine" "vm1" {
   }
 
   nic_list {
-    subnet_uuid = var.nutanix_vnic
+    subnet_uuid = data.nutanix_subnet.subnet.metadata.uuid
   }
 }
 
@@ -86,7 +86,7 @@ resource "nutanix_virtual_machine" "vm2" {
   }
 
   nic_list {
-    subnet_uuid = var.nutanix_vnic
+    subnet_uuid = data.nutanix_subnet.subnet.metadata.uuid
   }
 }
 
@@ -117,7 +117,7 @@ resource "nutanix_virtual_machine" "vm3" {
   }
 
   nic_list {
-    subnet_uuid = var.nutanix_vnic
+    subnet_uuid = data.nutanix_subnet.subnet.metadata.uuid
   }
 }
 
@@ -148,7 +148,7 @@ resource "nutanix_virtual_machine" "vm4" {
   }
 
   nic_list {
-    subnet_uuid = var.nutanix_vnic
+    subnet_uuid = data.nutanix_subnet.subnet.metadata.uuid
   }
 }
 
@@ -179,7 +179,7 @@ resource "nutanix_virtual_machine" "vm5" {
   }
 
   nic_list {
-    subnet_uuid = var.nutanix_vnic
+    subnet_uuid = data.nutanix_subnet.subnet.metadata.uuid
   }
 }
 
@@ -210,6 +210,6 @@ resource "nutanix_virtual_machine" "vm6" {
   }
 
   nic_list {
-    subnet_uuid = var.nutanix_vnic
+    subnet_uuid = data.nutanix_subnet.subnet.metadata.uuid
   }
 }
