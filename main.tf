@@ -1,5 +1,3 @@
-
-
 provider "nutanix" {
   username        = var.nutanix_username
   password        = var.nutanix_passord
@@ -18,5 +16,11 @@ resource "nutanix_image" "rhcos_image" {
 
 module "create_vm" {
   source = "./modules/vm"
+  
+  nutanix_username = ""
+  nutanix_passord = ""
+  nutanix_endpoint = ""
+  nutanix_port = ""
+  vm_name = ""
   
 }
