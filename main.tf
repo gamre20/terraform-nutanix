@@ -1,10 +1,3 @@
-terraform {
-    nutanix = {
-      source = "nutanix/nutanix"
-      version = "1.2.0"
-    }
-}
-
 provider "nutanix" {
   username        = var.nutanix_username
   password        = var.nutanix_passord
