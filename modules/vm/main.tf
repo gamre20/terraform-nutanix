@@ -2,6 +2,12 @@ terraform {
     required_version = ">= 0.12"
 }
 
+terraform {
+  nutanix = {
+    source = "nutanix/nutanix"
+   }
+}
+
 data "nutanix_clusters" "ocp-cluster" {}
 
 
