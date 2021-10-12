@@ -1,9 +1,5 @@
 terraform {
     required_version = ">= 0.12"
-    nutanix = {
-      source = "nutanix/nutanix"
-      version = "1.2.0"
-    }
 }
 
 data "nutanix_clusters" "ocp-cluster" {}
