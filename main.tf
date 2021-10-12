@@ -23,7 +23,9 @@ resource "nutanix_image" "rhcos_image" {
 
 
 
-data "nutanix_clusters" "ocp-cluster" {}
+data "nutanix_clusters" "clusters" {}
+
+data "nutanix_subnets" "subnets" {}
 
 
 resource "nutanix_virtual_machine" "vm1" {
