@@ -1,35 +1,26 @@
 terraform {
-  required_providers {
-   nutanix = {
+  nutanix = {
       source = "nutanix/nutanix"
    }
-
-  }
 }
 
-
-module "create_ocp_vm" {
-    source = "modules/rhcos_vm.tf"
-    name = "master-0"   
+provider "nutanix" {
+  username        = var.nutanix_username
+  password        = var.nutanix_passord
+  endpoint        = var.nutanix_endpoint
+  port            = var.nutanix_port
+  insecure        = true
+  wait_timeout    = 10
+  session_auth    = true
 }
 
-module "create_ocp_vm" {
-    source = "modules/rhcos_vm.tf"
-    name = "master-1"   
+resource "nutanix_image" "rhcos_image" {
+  name            = "rhcos"
+  description     = "Red Hat CoreOs"
+  source_uri      = "http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-amd64/current/images/netboot/mini.iso"
 }
 
-# module "master-2" {
-#     source = "modules/rhcos_vm.tf"    
-# }
-
-# module "worker-0" {
-#     source = "modules/rhcos_vm.tf"    
-# }
-
-# module "worker-1" {
-#     source = "modules/rhcos_vm.tf"    
-# }
-
-# module "worker-2" {
-#     source = "modules/rhcos_vm.tf"    
-# }
+module "create_vm" {
+  source = "./modules/vm"
+  
+}
