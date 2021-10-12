@@ -1,8 +1,10 @@
 terraform {
   nutanix = {
-      source = "nutanix/nutanix"
+    source = "nutanix/nutanix"
    }
 }
+
+
 
 provider "nutanix" {
   username        = var.nutanix_username
